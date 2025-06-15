@@ -2,10 +2,13 @@ package plus.simulation;
 
 import desmoj.core.dist.ContDistExponential;
 import desmoj.core.simulator.Model;
+import desmoj.core.simulator.ProcessQueue;
 
 public class FactoryModel extends Model {
     private ContDistExponential machineBreakdownTime;
     private ContDistExponential repairTime;
+
+    ProcessQueue<MachineProcess> repairQueue;
 
     public FactoryModel(String s) {
         super(null, s, true, true);
@@ -33,6 +36,8 @@ public class FactoryModel extends Model {
 
         machineBreakdownTime.setNonNegative(true);
         repairTime.setNonNegative(true);
+
+        repairQueue = new ProcessQueue<>(this, "Repair Queue", true, true);
     }
 
     public double getMachineBreakdownTime() {
