@@ -4,8 +4,7 @@ import desmoj.core.dist.ContDistExponential;
 import desmoj.core.simulator.Model;
 import desmoj.core.simulator.ProcessQueue;
 import desmoj.core.simulator.TimeSpan;
-
-import java.util.concurrent.TimeUnit;
+import desmoj.core.statistic.Aggregate;
 
 public class FactoryModel extends Model {
     private final int machines;
@@ -15,6 +14,8 @@ public class FactoryModel extends Model {
     private ContDistExponential repairTime;
 
     private ProcessQueue<MachineProcess> repairQueue;
+
+    protected Aggregate machineDowntime;
 
     public FactoryModel(String s, int machines, int workers) {
         super(null, s, true, true);
@@ -48,14 +49,16 @@ public class FactoryModel extends Model {
         repairTime.setNonNegative(true);
 
         repairQueue = new ProcessQueue<>(this, "Repair Queue", true, true);
+
+        machineDowntime = new Aggregate(this, "Total Machine Downtime", true, false);
     }
 
     public TimeSpan getMachineBreakdownTime() {
-        return machineBreakdownTime.sampleTimeSpan(TimeUnit.MINUTES);
+        return machineBreakdownTime.sampleTimeSpan();
     }
 
     public TimeSpan getRepairTime() {
-        return repairTime.sampleTimeSpan(TimeUnit.MINUTES);
+        return repairTime.sampleTimeSpan();
     }
 
     public ProcessQueue<MachineProcess> getRepairQueue() {
