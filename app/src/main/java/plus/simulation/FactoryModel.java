@@ -3,15 +3,25 @@ package plus.simulation;
 import desmoj.core.dist.ContDistExponential;
 import desmoj.core.simulator.Model;
 import desmoj.core.simulator.ProcessQueue;
+import desmoj.core.simulator.TimeSpan;
+
+import java.util.concurrent.TimeUnit;
 
 public class FactoryModel extends Model {
+    private final int machines;
+    private final int workers;
+    private int availableWorkers;
+
     private ContDistExponential machineBreakdownTime;
     private ContDistExponential repairTime;
 
-    ProcessQueue<MachineProcess> repairQueue;
+    private ProcessQueue<MachineProcess> repairQueue;
 
-    public FactoryModel(String s) {
+    public FactoryModel(String s, int machines, int workers) {
         super(null, s, true, true);
+        this.machines = machines;
+        this.workers = workers;
+        availableWorkers = workers;
     }
 
     @Override
@@ -40,11 +50,27 @@ public class FactoryModel extends Model {
         repairQueue = new ProcessQueue<>(this, "Repair Queue", true, true);
     }
 
-    public double getMachineBreakdownTime() {
-        return machineBreakdownTime.sample();
+    public TimeSpan getMachineBreakdownTime() {
+        return machineBreakdownTime.sampleTimeSpan(TimeUnit.MINUTES);
     }
 
-    public double getRepairTime() {
-        return repairTime.sample();
+    public TimeSpan getRepairTime() {
+        return repairTime.sampleTimeSpan(TimeUnit.MINUTES);
+    }
+
+    public ProcessQueue<MachineProcess> getRepairQueue() {
+        return repairQueue;
+    }
+
+    public int availableWorkers() {
+        return availableWorkers;
+    }
+
+    public void requestWorker() {
+        availableWorkers--;
+    }
+
+    public void releaseWorker() {
+        availableWorkers++;
     }
 }
