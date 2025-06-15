@@ -33,7 +33,9 @@ public class FactoryModel extends Model {
 
     @Override
     public void doInitialSchedules() {
-
+        for (int i = 0; i < machines; i++) {
+            new MachineProcess(this, "Machine " + i).activate();
+        }
     }
 
     @Override
