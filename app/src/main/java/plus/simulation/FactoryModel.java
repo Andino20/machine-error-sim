@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 public class FactoryModel extends Model {
     private final int machines;
-    private final int workers;
     private int availableWorkers;
 
     private ContDistExponential machineBreakdownTime;
@@ -20,7 +19,6 @@ public class FactoryModel extends Model {
     public FactoryModel(String s, int machines, int workers) {
         super(null, s, true, true);
         this.machines = machines;
-        this.workers = workers;
         availableWorkers = workers;
     }
 
