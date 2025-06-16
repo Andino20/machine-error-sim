@@ -13,7 +13,7 @@ public class App {
 
         exp.setShowProgressBar(true);
         exp.setShowProgressBarAutoclose(true);
-        TimeInstant stopTime = new TimeInstant(60000);
+        TimeInstant stopTime = new TimeInstant(250 * 8 * 60);  // There are 250 working days in 2025
         exp.tracePeriod(new TimeInstant(0), stopTime);
         exp.stop(stopTime);
 
