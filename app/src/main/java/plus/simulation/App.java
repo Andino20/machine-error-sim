@@ -12,6 +12,7 @@ public class App {
         model.connectToExperiment(exp);
 
         exp.setShowProgressBar(true);
+        exp.setShowProgressBarAutoclose(true);
         TimeInstant stopTime = new TimeInstant(60000);
         exp.tracePeriod(new TimeInstant(0), stopTime);
         exp.stop(stopTime);
