@@ -32,8 +32,8 @@ public class App {
                 fw.write("s\tmachine_cost\tworker_cost\ttotal_cost\n");
                 for (int s = 1; s <= workers; s++) {
                     SimulationResult result = runExperiment(m, s, System.currentTimeMillis());
-                    double machineCost = result.totalDowntime() * MACHINE_COST_PER_MIN / SIM_TIME.getTimeAsDouble();
-                    double workerCost = WORKER_COST_PER_MIN * s;
+                    double machineCost = result.totalDowntime() * MACHINE_COST_PER_MIN / SIM_TIME.getTimeAsDouble() * 60.0;
+                    double workerCost = WORKER_COST_PER_MIN * s * 60.0;
                     double totalCost = machineCost + workerCost;
                     fw.write(String.format("%d\t%.2f\t%.2f\t%.2f\n", s, machineCost, workerCost, totalCost));
                 }
