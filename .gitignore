@@ -6,6 +6,7 @@ build/
 
 ### DESMO-J Report files
 reports/*.html
+reports/*.txt
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
