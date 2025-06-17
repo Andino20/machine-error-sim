@@ -37,7 +37,7 @@ public class MachineProcess extends SimProcess {
     }
 
     private void tryRepairNext() {
-        if (!model.getRepairQueue().isEmpty()) {
+        if (model.getRepairQueue().first() != null) {
             MachineProcess next = model.getRepairQueue().removeFirst();
             next.activate();
         }
