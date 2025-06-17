@@ -26,7 +26,7 @@ def main():
     plt.plot(s, worker_cost, 's--', label='Worker Cost')
     plt.plot(s, total_cost, '^-', label='Total Cost')
 
-    plt.xlabel('# Service Mitarbeiter')
+    plt.xlabel('# Service Mitarbeiter:innen')
     plt.ylabel('Kosten [€/min]')
     plt.title(plot_title)
     plt.legend()
