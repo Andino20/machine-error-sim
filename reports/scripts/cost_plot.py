@@ -22,9 +22,9 @@ def main():
 
     # Plot
     plt.figure(figsize=(10, 6))
-    plt.plot(s, machine_cost, 'o-', label='Machine Cost')
-    plt.plot(s, worker_cost, 's--', label='Worker Cost')
-    plt.plot(s, total_cost, '^-', label='Total Cost')
+    plt.plot(s, machine_cost, 'o-', label='Maschinenkosten')
+    plt.plot(s, worker_cost, 's--', label='Mitarbeiterkosten')
+    plt.plot(s, total_cost, '^-', label='Gesamtkosten')
 
     plt.xlabel('# Service Mitarbeiter:innen')
     plt.ylabel('Kosten [€/h]')
