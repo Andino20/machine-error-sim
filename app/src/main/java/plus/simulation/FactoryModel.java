@@ -4,7 +4,7 @@ import desmoj.core.dist.ContDistExponential;
 import desmoj.core.simulator.Model;
 import desmoj.core.simulator.ProcessQueue;
 import desmoj.core.simulator.TimeSpan;
-import desmoj.core.statistic.Aggregate;
+import desmoj.core.statistic.*;
 
 public class FactoryModel extends Model {
     private final int machines;
@@ -15,7 +15,8 @@ public class FactoryModel extends Model {
 
     private ProcessQueue<MachineProcess> repairQueue;
 
-    protected Aggregate machineDowntime;
+    private Aggregate totalMachineDowntime;
+    private Aggregate totalRepairTime;
 
     public FactoryModel(String s, int machines, int workers) {
         super(null, s, true, true);
@@ -44,13 +45,15 @@ public class FactoryModel extends Model {
         // The distribution mean is in minutes
         machineBreakdownTime = new ContDistExponential(this, "Machine Breakdown Time Distribution", 8 * 60, true, true);
         repairTime = new ContDistExponential(this, "Repair Time Distribution", 2 * 60, true, true);
-
         machineBreakdownTime.setNonNegative(true);
         repairTime.setNonNegative(true);
 
         repairQueue = new ProcessQueue<>(this, "Repair Queue", true, true);
 
-        machineDowntime = new Aggregate(this, "Total Machine Downtime", true, false);
+        totalMachineDowntime = new Aggregate(this, "Total Machine Downtime", true, false);
+        totalMachineDowntime.setUnit("min");
+        totalRepairTime = new Aggregate(this, "Total Repair Time", true, false);
+        totalRepairTime.setUnit("min");
     }
 
     public TimeSpan getMachineBreakdownTime() {
@@ -75,5 +78,21 @@ public class FactoryModel extends Model {
 
     public void releaseWorker() {
         availableWorkers++;
+    }
+
+    public void reportDowntime(double downtime) {
+        totalMachineDowntime.update(downtime);
+    }
+
+    public void reportRepairTime(double repairTime) {
+        totalRepairTime.update(repairTime);
+    }
+
+    public double totalDowntime() {
+        return totalMachineDowntime.getValue();
+    }
+
+    public double totalRepairTime() {
+        return totalRepairTime.getValue();
     }
 }

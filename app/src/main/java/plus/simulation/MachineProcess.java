@@ -3,6 +3,7 @@ package plus.simulation;
 import co.paralleluniverse.fibers.SuspendExecution;
 import desmoj.core.simulator.SimProcess;
 import desmoj.core.simulator.TimeInstant;
+import desmoj.core.simulator.TimeSpan;
 
 public class MachineProcess extends SimProcess {
     private final FactoryModel model;
@@ -28,7 +29,8 @@ public class MachineProcess extends SimProcess {
             repair();
 
             TimeInstant repairEndTime = model.presentTime();
-            model.machineDowntime.update(repairEndTime.getTimeAsDouble() - repairStartTime.getTimeAsDouble());
+            double downtime = repairEndTime.getTimeAsDouble() - repairStartTime.getTimeAsDouble();
+            model.reportDowntime(downtime);
 
             tryRepairNext();
         }
@@ -43,7 +45,9 @@ public class MachineProcess extends SimProcess {
 
     public void repair() throws SuspendExecution {
         model.requestWorker();
-        hold(model.getRepairTime());
+        TimeSpan repairTime = model.getRepairTime();
+        hold(repairTime);
+        model.reportRepairTime(repairTime.getTimeAsDouble());
         model.releaseWorker();
     }
 }
