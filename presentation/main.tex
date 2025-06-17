@@ -1,7 +1,115 @@
 \documentclass{beamer}
 
+% Theme and style
+\usetheme{metropolis} % modern clean theme
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes, arrows.meta}
+
+%Hyphenation rules
+\usepackage{hyphenat}
+\hyphenation{Mathe-matik wieder-gewinnen}
+
+% Metadata
+\title{Einführung in die Simulation\\DESMO-J Projekt}
+\subtitle{Ausfall von Maschinen}
+\author{Schmidt L, Schlager A, Weilert A}
+\institute{Paris Lodron Universität Salzburg}
+\date{\today}
+
+% Code style
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    breaklines=true
+}
+
 \begin{document}
-    \begin{frame}
-        Hello world!
+
+% Title slide
+    \maketitle
+
+% Overview
+    \begin{frame}{Overview}
+        \tableofcontents
     \end{frame}
+
+% Section: Introduction
+    \section{Einführung}
+    \begin{frame}{Szenario}
+        \begin{itemize}
+            \item Simulate a real-world system using Java
+            \item Analyze performance and behavior
+            \item Apply discrete-event simulation concepts
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Ziel}
+        \begin{itemize}
+            \item Simulate a real-world system using Java
+            \item Analyze performance and behavior
+            \item Apply discrete-event simulation concepts
+        \end{itemize}
+    \end{frame}
+
+% Section: System Description
+    \section{System Beschreibung}
+    \begin{frame}{Problem Description}
+        \begin{itemize}
+            \item Short description of what the system simulates
+            \item Key entities and processes involved
+        \end{itemize}
+    \end{frame}
+
+% Section: Implementation
+    \section{Implementation in Java}
+    \begin{frame}[fragile]{Architecture}
+        \begin{itemize}
+            \item Object-oriented design
+            \item Use of classes for events, entities, and the simulation environment
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Example Code Snippet}
+        \begin{lstlisting}[language=Java, caption=Basic event class]
+public class MachineEvent extends Event {
+    public void eventRoutine() {
+        // Event logic here
+    }
+}
+        \end{lstlisting}
+    \end{frame}
+
+% Section: Results
+    \section{Ergebnisse}
+    \begin{frame}{Metrics Collected}
+        \begin{itemize}
+            \item Average wait time
+            \item System utilization
+            \item Throughput
+        \end{itemize}
+    \end{frame}
+
+% Section: Conclusion
+    \section{Fazit}
+    \begin{frame}{Zusammenfassung}
+        \begin{itemize}
+            \item Simulation successfully modeled the system
+            \item Gained insights into system behavior
+            \item Learned Java simulation design
+        \end{itemize}
+    \end{frame}
+
+% Thank you
+    \begin{frame}[standout]
+        Vielen Dank!\\
+        Fragen?
+    \end{frame}
+
 \end{document}
