@@ -5,8 +5,9 @@ build/
 !**/src/test/**/build/
 
 ### DESMO-J Report files
-reports/*.html
-reports/*.txt
+reports/**/*.html
+reports/**/*.txt
+reports/**/*.pdf
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
