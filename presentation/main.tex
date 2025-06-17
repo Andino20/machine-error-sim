@@ -8,8 +8,13 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath}
+\usepackage{eurosym}
+\usepackage{siunitx}
 \usepackage{tikz}
 \usetikzlibrary{positioning, shapes, arrows.meta}
+
+\sisetup{locale=DE, per-mode=symbol}
+\DeclareSIUnit{\sieuro}{\mbox{\euro}}
 
 %Hyphenation rules
 \usepackage{hyphenat}
@@ -43,19 +48,36 @@
 % Section: Introduction
     \section{Einführung}
     \begin{frame}{Szenario}
+        Eine Fabrik hat $m$ Maschinen und $s$ Service-MitarbeiterInnen.
+        Die Maschinen brauchen immer wieder einen Service.
+        In dieser Zeit verursachen die Maschinen Kosten, bis ein(e) MitarbeiterIn die sie repariert hat.
+        Sind alle MitarbeiterInnen beschäftigt,
+        müssen die Maschinen auf eine Reparatur warten.
+        Die Reparaturreihenfolge erfolgt nach dem FIFO Prinzip.\vspace*{1em}\newline
+        \textit{Kosten}
         \begin{itemize}
-            \item Simulate a real-world system using Java
-            \item Analyze performance and behavior
-            \item Apply discrete-event simulation concepts
+            \item $\SI{10}{\sieuro\per\hour}$ pro MitarbeiterIn (immer)
+            \item $\SI{50}{\sieuro\per\hour}$ pro Maschine (solange außer Betrieb)
         \end{itemize}
     \end{frame}
 
+    \begin{frame}{Kosten}
+        Die verursachten Kosten sind von der gesamten Dauer der inaktiven Phasen (\textbf{Downtime}) aller Maschinen und den
+        Löhnen der MitarbeiterInnen abhängig.
+        Sei die Anzahl der Maschinen fix, so ergibt sich die Kostenfunktion in Abhängigkeit von der Anzahl der MitarbeiterInnen,
+        der Downtime (DT) und der gesamten Dauer der Simulation (\textbf{Total Time} TT).
+        \[
+            \mathrm{Cost}(s, \text{DT}, \text{TT}) = \text{DT}\,\cdot \SI{50}{\sieuro\per\hour} + \text{TT}\,\cdot \SI{10}{\sieuro\per\hour} \cdot s
+        \]
+    \end{frame}
+
     \begin{frame}{Ziel}
-        \begin{itemize}
-            \item Simulate a real-world system using Java
-            \item Analyze performance and behavior
-            \item Apply discrete-event simulation concepts
-        \end{itemize}
+        Wir suchen die Anzahl $\hat{s}$ an MitarbeiterInnen, welche die Gesamtkosten für $m$ Maschinen minimiert.
+        \[
+             \hat{s} = \arg\min_{s \in \mathbb{N}} \mathrm{Cost}(s, \text{DT}, \text{TT})
+        \]
+        Aus den Ergebnissen für unterschiedliche $m$ soll außerdem ein Richtwert bestimmt werden, welcher
+        die optimale Anzahl an MitarbeiterInnen pro Maschine beschreiben soll.
     \end{frame}
 
 % Section: System Description
