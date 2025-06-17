@@ -17,7 +17,7 @@ public class App {
     private static final double WORKER_COST_PER_MIN = 10.0 / 60.0;
 
     // Time Units are in minutes
-    private static final TimeInstant SIM_TIME = new TimeInstant(250 * 8 * 60);
+    private static final TimeInstant SIM_TIME = new TimeInstant(500 * 8 * 60);
     private static final TimeInstant START_TIME = new TimeInstant(8 * 60);
 
     public static void main(String[] args) {
