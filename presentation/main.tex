@@ -50,7 +50,7 @@
     \begin{frame}{Szenario}
         Eine Fabrik hat $m$ Maschinen und $s$ Service-MitarbeiterInnen.
         Die Maschinen brauchen immer wieder einen Service.
-        In dieser Zeit verursachen die Maschinen Kosten, bis ein(e) MitarbeiterIn die sie repariert hat.
+        In dieser Zeit verursachen die Maschinen Kosten, bis ein(e) MitarbeiterIn sie repariert hat.
         Sind alle MitarbeiterInnen beschäftigt,
         müssen die Maschinen auf eine Reparatur warten.
         Die Reparaturreihenfolge erfolgt nach dem FIFO Prinzip.\vspace*{1em}\newline
@@ -62,10 +62,10 @@
     \end{frame}
 
     \begin{frame}{Kosten}
-        Die verursachten Kosten sind von der gesamten Dauer der inaktiven Phasen (\textbf{Downtime}) aller Maschinen und den
+        Die verursachten Kosten sind von der gesamten Dauer der inaktiven Phasen (\textbf{Downtime} DT) aller Maschinen und den
         Löhnen der MitarbeiterInnen abhängig.
         Sei die Anzahl der Maschinen fix, so ergibt sich die Kostenfunktion in Abhängigkeit von der Anzahl der MitarbeiterInnen,
-        der Downtime (DT) und der gesamten Dauer der Simulation (\textbf{Total Time} TT).
+        der Downtime und der gesamten Dauer der Simulation (\textbf{Total Time} TT).
         \[
             \mathrm{Cost}(s, \text{DT}, \text{TT}) = \text{DT}\,\cdot \SI{50}{\sieuro\per\hour} + \text{TT}\,\cdot \SI{10}{\sieuro\per\hour} \cdot s
         \]
@@ -82,11 +82,32 @@
 
 % Section: System Description
     \section{System Beschreibung}
-    \begin{frame}{Problem Description}
+    \begin{frame}{Simulation}
+        Allgemeine Informationen zur Simulation
         \begin{itemize}
-            \item Short description of what the system simulates
-            \item Key entities and processes involved
+            \item Prozessorientierte Simulation mit Maschinen als Prozesse
+            \item Simulationsdauer von 2 Arbeitsjahren (500 Tage, $\SI{8}{\hour}$)
+            \item Zeitauflösung in Minuten
+            \item $m\in\{1, \dots, 20\}$ und $s\in\{1,\dots, 20\}$
         \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Wahrscheinlichkeitverteilungen}
+        Breakdown Time Verteilung
+        Repair Time Verteilung
+    \end{frame}
+
+    \begin{frame}{Factory Model}
+
+    \end{frame}
+
+    \begin{frame}{Maschinen Modell}
+        Grafik
+    \end{frame}
+
+    \begin{frame}{MitarbeiterInnen Modell}
+        Als Zahl die erhöht und verringert wird, je nach Verfügbarkeit von ArbeiterInnen.
+        Falls keine MitarbeiterInnen verfügbar sind, dann kommt der Prozess in die Warteschlange.
     \end{frame}
 
 % Section: Implementation
@@ -96,6 +117,18 @@
             \item Object-oriented design
             \item Use of classes for events, entities, and the simulation environment
         \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Factory Model}
+        Factory Model Erklärung
+    \end{frame}
+
+    \begin{frame}{Machine Process}
+        Machine Process Erklärung
+    \end{frame}
+
+    \begin{frame}{Main / Application}
+        Main Erklärung
     \end{frame}
 
     \begin{frame}[fragile]{Example Code Snippet}
@@ -110,21 +143,33 @@ public class MachineEvent extends Event {
 
 % Section: Results
     \section{Ergebnisse}
-    \begin{frame}{Metrics Collected}
-        \begin{itemize}
-            \item Average wait time
-            \item System utilization
-            \item Throughput
-        \end{itemize}
+    \begin{frame}{Ergebnisse}
+        Für $m\in [1; 20]$ wurden jeweils $s\in[1;20]$ MitarbeiterInnen für zwei Arbeitsjahre simuliert.
+        An den Ergebnissen ist die optimale Konfiguration zu entnehmen.
+    \end{frame}
+
+    \begin{frame}{Grafiken}
+        20 Grafiken
+    \end{frame}
+
+    \begin{frame}{Interpretation}
+        Slide mit optimalen Werte für jede Anzahl an Maschinen.
+        Hier ist ein Muster zu erkennen.
+        (Tabelle)
+    \end{frame}
+
+    \begin{frame}{Regression}
+        Regressions grafik
     \end{frame}
 
 % Section: Conclusion
     \section{Fazit}
     \begin{frame}{Zusammenfassung}
         \begin{itemize}
-            \item Simulation successfully modeled the system
-            \item Gained insights into system behavior
-            \item Learned Java simulation design
+            \item Schwierigkeiten
+            \item Entsprechen die Ergebnisse den Erwartungen
+            \item Weitere Überlegungen
+            \item Was war interessant?
         \end{itemize}
     \end{frame}
 
