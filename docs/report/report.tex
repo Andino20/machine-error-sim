@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{article}
+
+% Language and encoding
+\usepackage[ngerman]{babel}
+
+% Page layout
+\usepackage{geometry}
+\geometry{a4paper, top=30mm, left=25mm, right=25mm, bottom=30mm}
+
+% Fonts and spacing
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{lmodern}
+
+% Header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+
+% Math and symbols
+\usepackage{amsmath, amssymb}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{locale = DE} % Use German number formatting
+
+% Links
+\usepackage[hidelinks]{hyperref}
+
+% Title page
+\title{
+    \Huge{Einführung in die Simulation\\Maschinenfehler} \\
+    \vspace{0.5cm}
+    \large{Paris Lodron Universität Salzburg}
+}
+\author{
+    Schmidt Linda, Weilert Alexander, Schlager Andreas \\
+}
+\date{\today}
+
+% Main document
+\begin{document}
+
+    \maketitle
+    \thispagestyle{empty}
+    \newpage
+
+    \tableofcontents
+    \newpage
+
+    \section{Einleitung}
+    Hier wird eine Einführung in das Thema des Berichts gegeben. Zum Beispiel, welches System simuliert wird und warum.
+
+    \newpage
+
+    \section{Modellierung}
+    Hier wird das gewählte Simulationsmodell vorgestellt. Dazu gehört:
+    \begin{itemize}
+        \item Annahmen
+        \item Modellstruktur (eventuell mit Diagrammen)
+        \item Formale Beschreibung (z.\,B. Zustände, Ereignisse, Wahrscheinlichkeiten)
+    \end{itemize}
+
+    \newpage
+
+    \section{Implementierung}
+    Details zur technischen Umsetzung (Programmiersprache, Simulationsumgebung, Bibliotheken).
+
+    \newpage
+
+    \section{Ergebnisse}
+    Darstellung und Auswertung der durchgeführten Simulationsexperimente:
+    \begin{itemize}
+        \item Simulationsparameter
+        \item Ergebnisse in Tabellen und Diagrammen
+        \item Statistische Auswertungen
+    \end{itemize}
+
+    \section{Fazit}
+    Zusammenfassung der wichtigsten Erkenntnisse aus dem Bericht.
+
+    \newpage
+    \appendix
+
+    \section{Anhang}
+    Zusätzliche Informationen, z.\,B. Quellcode-Auszüge oder vollständige Ergebnislisten.
+\end{document}
